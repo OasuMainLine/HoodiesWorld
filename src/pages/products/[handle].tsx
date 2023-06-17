@@ -11,6 +11,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import BreadCrumbs from "@/components/BreadCrumbs";
 import BreadCrumbsStep from "@/components/BreadCrumbs/BreadCrumbsStep";
+import ReadMoreText from "@/components/ReadMoreText";
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
 	const handles = await getProductHandles();
@@ -98,15 +99,15 @@ export default function ProductDetail({ product }: ProductDetailProps) {
 				</BreadCrumbsStep>
 				<BreadCrumbsStep key={product.title}>{product.title}</BreadCrumbsStep>
 			</BreadCrumbs>
-			<div className="flex h-full w-full gap-6 px-14">
+			<div className="flex h-full flex-col md:flex-row w-full gap-6 px-5 md:px-14">
 				<Image
 					width={679}
 					height={905}
-					className="h-screen flex-[0_0_50%] bg-gray-600 object-cover object-top"
+					className="h-screen flex-1/2 bg-gray-600 object-cover object-top"
 					src={product.image}
 					alt={product.title}
 				/>
-				<div className="flex w-full flex-[0_0_50%] flex-col gap-5 pt-5">
+				<div className="flex w-full flex-1/2 flex-col gap-5 pt-5">
 					<div className="flex w-full flex-col gap-4">
 						<div>
 							<h1 className="text-2xl font-semibold">{product.title}</h1>
@@ -118,7 +119,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
 						<p className="text-xl font-semibold text-orange-600">
 							{_price(product.price)}
 						</p>
-						<p className="w-3/4 text-lg">{product.description}</p>
+						<ReadMoreText className="md:w-3/4 text-lg">{product.description}</ReadMoreText>
 					</div>
 					<div className="">
 						<p className="text-lg font-semibold">Size:</p>

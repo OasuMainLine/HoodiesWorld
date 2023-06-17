@@ -17,7 +17,7 @@ export default function Button({
 
 	const sizeClass =
 		variant == "normal"
-			? "px-10 py-2 w-fit h-fit"
+			? "px-5 md:px-10 py-2 w-fit h-fit"
 			: "grid place-content-center w-full h-13";
 	return (
 		<button className={`${defaultClass} ${sizeClass} ${className}`} {...props}>

@@ -36,4 +36,55 @@ body {
 	.button:hover::before {
 		@apply scale-x-100;
 	}
+
+	.about-image {
+		@apply h-full w-full object-cover md:flex-[0_0_25%];
+	}
+
+	.read-more {
+		position: relative;
+	}
+	.read-more::after {
+		--to-color: #f7f7f7;
+		display: block;
+		content: "";
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		height: 75%;
+		width: 100%;
+
+		background: -moz-linear-gradient(
+			top,
+			rgba(255, 255, 255, 0) 0%,
+			var(--to-color) 100%
+		); /* FF3.6+ */
+		background: -webkit-gradient(
+			linear,
+			left top,
+			left bottom,
+			color-stop(0%, rgba(255, 255, 255, 0)),
+			color-stop(100%, var(--to-color))
+		); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(
+			top,
+			rgba(255, 255, 255, 0) 0%,
+			var(--to-color) 100%
+		); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(
+			top,
+			rgba(255, 255, 255, 0) 0%,
+			var(--to-color) 100%
+		); /* Opera 11.10+ */
+		background: -ms-linear-gradient(
+			top,
+			rgba(255, 255, 255, 0) 0%,
+			var(--to-color) 100%
+		); /* IE10+ */
+		background: linear-gradient(
+			to bottom,
+			rgba(255, 255, 255, 0) 0%,
+			var(--to-color) 100%
+		); /* W3C */
+	}
 }

@@ -20,18 +20,18 @@ export default function ProductCard({
 }: ProductCardProps) {
 	return (
 		<Link href={`/products/${handle}`} className="flex flex-col">
-			<div className="h-fit w-fit overflow-hidden">
+			<div className="aspect-h-4 aspect-w-3 md:aspect-w-4 overflow-hidden">
 				<Image
 					height={328}
 					width={301}
 					src={image}
-					className="aspect-h-4 aspect-w-3 h-80 w-76 object-cover object-top p-0 transition-transform duration-200 hover:scale-110"
+					className="h-full w-full object-cover object-top p-0 transition-transform duration-200 hover:scale-110"
 					alt={title}
 				/>
 			</div>
 			<div>
-				<p className="text-xl">{title}</p>
-				<p className="text-base text-gray-700">
+				<p className="text-lg md:text-xl min-h-[2.5rem] leading-5">{title}</p>
+				<p className="text-sm text-gray-700">
 					{tags.map((tag) => tag[0].toUpperCase() + tag.slice(1)).join(", ")}
 				</p>
 

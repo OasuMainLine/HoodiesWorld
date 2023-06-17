@@ -1,5 +1,5 @@
 import { useCart } from "@/contexts/CartProvider";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import CartCard from "./CartCard";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { _price } from "@/lib/client";
@@ -13,6 +13,7 @@ interface CartPopoverProps {
 export default function CartPopover({ show, setShow }: CartPopoverProps) {
 	const cartContext = useCart();
 	const ToastContext = useToast();
+	const timeoutRef = useRef<number | null>(null);
 	const [loading, setLoading] = useState(false);
 	const total =
 		cartContext && cartContext.purchases.length > 0
@@ -22,6 +23,9 @@ export default function CartPopover({ show, setShow }: CartPopoverProps) {
 			  )
 			: 0;
 
+	useEffect(() => {
+		return () => window.clearTimeout(timeoutRef.current || 0);
+	}, []);
 	async function checkout() {
 		setLoading(true);
 
@@ -45,10 +49,12 @@ export default function CartPopover({ show, setShow }: CartPopoverProps) {
 				if (ToastContext) {
 					ToastContext.fire("Redirecting to checkout...");
 				}
-				const link = document.createElement("a");
-				link.href = webUrl;
-				link.target = "_blank";
-				link.click();
+				timeoutRef.current = window.setTimeout(() => {
+					const link = document.createElement("a");
+					link.href = webUrl;
+					link.target = "_blank";
+					link.click();
+				}, 1200);
 			}
 		}
 		setLoading(false);
@@ -65,7 +71,7 @@ export default function CartPopover({ show, setShow }: CartPopoverProps) {
 			></div>
 
 			<div
-				className="duration-400 fixed right-0 top-0 z-50 h-screen w-1/3 bg-brand-white px-5 pt-4 transition-transform ease-in-out"
+				className="duration-400 fixed right-0 top-0 z-50 h-screen w-5/6 bg-brand-white px-5 pt-4 transition-transform ease-in-out md:w-1/3"
 				style={{
 					transform: show ? "translateX(0)" : "translateX(100%)",
 				}}

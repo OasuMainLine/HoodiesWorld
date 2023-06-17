@@ -36,7 +36,7 @@ export default function Toast({
 			style={{
 				transform: show ? "translate(-50%, 0)" : "translate(-50%, 200%)",
 			}}
-			className="fixed bottom-10 left-1/2 z-50 flex min-w-fit items-center justify-center gap-2 bg-brand-white px-5 py-2 text-center text-lg font-bold text-brand-black shadow-md shadow-brand-black transition-transform"
+			className="fixed bottom-10 left-1/2 z-[60] flex min-w-fit items-center justify-center gap-2 bg-brand-white px-5 py-2 text-center text-lg font-bold text-brand-black shadow-md shadow-brand-black transition-transform"
 		>
 			<CheckCircleIcon className="h-6 w-6 text-green-500" />
 			<p>{message}</p>
