@@ -43,7 +43,10 @@ module.exports = {
 				13: "3.25rem", //13px
 				76: "19rem", // 304px
 			},
-
+			flex: {
+				"1/2": "0 0 50%"
+			},
+ 
 			keyframes: {
 				"fade-in": {
 					"0%": {

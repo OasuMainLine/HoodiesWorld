@@ -25,29 +25,31 @@ export default function Hoodies({ collections }: HoodiesProps) {
 	const router = useRouter();
 	return (
 		<section id="hoodies" className="h-full w-full py-4">
-			<div className="flex w-full justify-between overflow-hidden bg-black px-14 text-brand-white">
-				<div className="my-auto flex h-full flex-col justify-center gap-7">
-					<h1 className="text-6xl font-bold">
+			<div className="flex w-full  md:justify-between overflow-hidden bg-black px-14 text-brand-white">
+				<div className="my-6 md:my-auto z-10 flex h-full flex-col text-center md:text-start items-center md:items-start justify-center gap-3 md:gap-7">
+					<h1 className="text-3xl md:text-6xl font-bold">
 						Blend <span className="text-orange-600">In</span>
 					</h1>
-					<p className="text-2xl font-medium">
+					<p className="text-base md:text-2xl font-medium">
 						Look up our new selection of <br /> monochrome hoodies
 					</p>
 
 					<Button
 						onClick={() => router.push("/collections/monochrome")}
-						className="bg-orange-600 text-xl"
+						className="bg-orange-600 text-sm md:text-xl"
 					>
 						View All
 					</Button>
 				</div>
-				<Image
-					width={737}
-					height={455}
-					src="/images/monochrome-promo.webp"
-					alt="monochrome promo image"
-					className="object-cover"
-				/>
+		 
+					<Image
+						width={737}
+						height={455}
+						src="/images/monochrome-promo.webp"
+						alt="monochrome promo image"
+						className="w-1/2 md:w-auto object-cover overflow-visible z-0"
+					/>
+			 
 			</div>
 
 			<div className="mt-10 flex h-fit w-full flex-col gap-10">

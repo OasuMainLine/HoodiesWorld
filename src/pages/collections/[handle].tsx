@@ -55,7 +55,7 @@ export default function Collection({ collection }: CollectionProps) {
 	}
 
 	return (
-		<section id="collection" className="px-14 py-4">
+		<section id="collection" className="px-5 md:px-14 py-4">
 			<BreadCrumbs className="">
 				<BreadCrumbsStep key={"home"} href="/">
 					Home
@@ -78,7 +78,7 @@ export default function Collection({ collection }: CollectionProps) {
 					setValue={setPriceFilter}
 				/>
 			</div>
-			<div className="grid grid-flow-row grid-cols-4">
+			<div className="grid grid-flow-row grid-cols-2 gap-5 md:grid-cols-4">
 				{sortProducts(collection.products).map((product) => (
 					<ProductCard key={product.handle} {...product} />
 				))}

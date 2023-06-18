@@ -12,20 +12,22 @@ export default function CartCard({ purchase }: CardCartProps) {
 	const cartContext = useCart();
 	return (
 		<div className="flex h-fit w-full gap-2 border-b-[1px] border-b-gray-500 pb-4">
-			<Image
-				width={153}
-				height={153}
-				src={purchase.image}
-				className="aspect-1 h-28 w-28 object-cover"
-				alt={purchase.title}
-			/>
+			<div className="aspect-1 flex-1/2">
+				<Image
+					width={153}
+					height={153}
+					src={purchase.image}
+					className="h-full w-full object-cover"
+					alt={purchase.title}
+				/>
+			</div>
 
 			<div className="flex h-full w-full flex-col justify-between">
 				<p className="text-lg font-medium leading-5">{purchase.title}</p>
 				<p className="text-lg font-medium text-gray-500">
 					Size: {purchase.variant.text}
 				</p>
-				<div className="flex w-full items-center justify-between">
+				<div className="flex w-full flex-col justify-between md:flex-row md:items-center">
 					<p className="text-lg font-bold text-orange-600">
 						{_price(purchase.price)}
 					</p>

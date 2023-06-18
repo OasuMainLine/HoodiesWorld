@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useCart } from "@/contexts/CartProvider";
 import Menu from "./Menu";
 import MenuItem from "./MenuItem";
+import ShoppingButton from "./ShoppingButton";
 
 interface HeaderProps {
 	setShowCart: React.Dispatch<boolean>;
@@ -14,15 +15,21 @@ export default function Header({ setShowCart }: HeaderProps) {
 	const cartContext = useCart();
 	return (
 		<header className="flex w-full flex-col">
-			<div className="flex items-center justify-between px-14 py-6">
-				<Link href="/" className="h-13 w-13">
-					<Image
-						width={130}
-						height={130}
-						src="/logo.png"
-						alt="Hoodies World logo"
+			<div className="flex flex-col items-center justify-between gap-5 px-14 py-6 md:flex-row md:gap-0">
+				<div className="flex w-full items-center justify-center md:w-auto">
+					<Link href="/" className="mx-auto h-13 w-13 md:m-0">
+						<Image
+							width={130}
+							height={130}
+							src="/logo.png"
+							alt="Hoodies World logo"
+						/>
+					</Link>
+					<ShoppingButton
+						className="block md:hidden"
+						onClick={() => setShowCart(true)}
 					/>
-				</Link>
+				</div>
 				<nav className="flex gap-4">
 					<Navlink href="/">Home</Navlink>
 					<Navlink href="/hoodies">Hoodies</Navlink>
@@ -34,15 +41,10 @@ export default function Header({ setShowCart }: HeaderProps) {
 					</Menu>
 					<Navlink href="/about">About</Navlink>
 				</nav>
-				<div
-					className="relative h-fit w-fit cursor-pointer"
+				<ShoppingButton
 					onClick={() => setShowCart(true)}
-				>
-					<ShoppingBagIcon className="h-8 w-8" />
-					<span className="absolute -bottom-2 -right-1 grid h-5 w-5 place-content-center rounded-full bg-red-600 text-xs text-brand-white">
-						{cartContext?.purchases.length || 0}
-					</span>
-				</div>
+					className="hidden md:block"
+				/>
 			</div>
 			<span className="before:contents-[''] h-px w-full px-14 before:block before:h-full before:w-full before:bg-gray-600"></span>
 		</header>
